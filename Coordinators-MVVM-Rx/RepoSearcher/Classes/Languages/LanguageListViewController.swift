@@ -35,7 +35,7 @@ class LanguageListViewController: UIViewController, StoryboardInitializable {
 
     private func setupBindings() {
         viewModel.languages
-            .observeOn(MainScheduler.instance)
+            .observe(on: MainScheduler.instance)
             .bind(to: tableView.rx.items(cellIdentifier: "LanguageCell", cellType: UITableViewCell.self)) { (_, language, cell) in
                 cell.textLabel?.text = language
                 cell.selectionStyle = .none

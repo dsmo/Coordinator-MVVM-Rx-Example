@@ -1,21 +1,242 @@
 {
-  "commitish" : "3.5.0",
+  "tvOS" : [
+    {
+      "container" : "RxBlocking.xcframework",
+      "identifier" : "tvos-arm64",
+      "name" : "RxBlocking",
+      "hash" : "94970063e154949c22f7c4618d559f66cb433adf9af91a87d933476617b25723",
+      "swiftToolchainVersion" : "5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)"
+    },
+    {
+      "identifier" : "tvos-arm64_x86_64-simulator",
+      "container" : "RxBlocking.xcframework",
+      "name" : "RxBlocking",
+      "swiftToolchainVersion" : "5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)",
+      "hash" : "85991992a75c86fca86525ef163e2c9275b46ad39d2efe59106401f8a70bd707"
+    },
+    {
+      "container" : "RxCocoa.xcframework",
+      "identifier" : "tvos-arm64",
+      "name" : "RxCocoa",
+      "swiftToolchainVersion" : "5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)",
+      "hash" : "4d29e7d048076e10f0d857a03e3cdac96d2efbbada5ffbc40ff3ce3878ca560b"
+    },
+    {
+      "container" : "RxCocoa.xcframework",
+      "hash" : "4b142f3e57cc2e2e7dae7cdd2e742b4c5a6a3a18729ef314b726c7c556a39842",
+      "name" : "RxCocoa",
+      "identifier" : "tvos-arm64_x86_64-simulator",
+      "swiftToolchainVersion" : "5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)"
+    },
+    {
+      "identifier" : "tvos-arm64",
+      "name" : "RxRelay",
+      "container" : "RxRelay.xcframework",
+      "swiftToolchainVersion" : "5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)",
+      "hash" : "f29ab70ac9bbf974a48885b35fab410768afcdf498f77589cbee9d1586a0e291"
+    },
+    {
+      "hash" : "71a1f0ad3a83de920c14b018e01a0488bfcdc0953c2c4cfd9e713b928cd80375",
+      "name" : "RxRelay",
+      "swiftToolchainVersion" : "5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)",
+      "container" : "RxRelay.xcframework",
+      "identifier" : "tvos-arm64_x86_64-simulator"
+    },
+    {
+      "swiftToolchainVersion" : "5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)",
+      "identifier" : "tvos-arm64",
+      "hash" : "da1493f99e52c4a15ac0ee7aaa5fc592a68cb2334ea370b84c9740e35a430ca0",
+      "container" : "RxSwift.xcframework",
+      "name" : "RxSwift"
+    },
+    {
+      "container" : "RxSwift.xcframework",
+      "name" : "RxSwift",
+      "hash" : "6eb3597c5424430107c986035c993932758c5a56cb102043d9f2106bbfc37963",
+      "swiftToolchainVersion" : "5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)",
+      "identifier" : "tvos-arm64_x86_64-simulator"
+    },
+    {
+      "name" : "RxTest",
+      "swiftToolchainVersion" : "5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)",
+      "hash" : "397b17849a9363f753781cd026b1877c41aee321d47a5130699a490c3ce4a3bb",
+      "container" : "RxTest.xcframework",
+      "identifier" : "tvos-arm64_x86_64-simulator"
+    },
+    {
+      "swiftToolchainVersion" : "5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)",
+      "container" : "RxTest.xcframework",
+      "identifier" : "tvos-arm64",
+      "name" : "RxTest",
+      "hash" : "19026a57d7a8e0f17f088a48bfcf093d53686e77daa89f611a31f79a85845052"
+    }
+  ],
+  "commitish" : "6.6.0",
   "iOS" : [
     {
-      "hash" : "21339c7da0bbee6f7ad3b06df9b1a7077df66e28ad3ad56f0451f4dce7d94c33",
+      "hash" : "aaff4223b94a25e213f8b17f77f790896be770aa008fdac1a58ab95c4f54b260",
+      "identifier" : "ios-arm64_x86_64-simulator",
+      "swiftToolchainVersion" : "5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)",
+      "container" : "RxBlocking.xcframework",
       "name" : "RxBlocking"
     },
     {
-      "hash" : "089a82fd8363cc78f3767ea6ef920cd16cd493139293ea67c9091dfb09358c1c",
-      "name" : "RxTest"
+      "hash" : "cd28500b8aa80461f1cbcf02a77310643e119cfb752e7605a07fce0771436c99",
+      "container" : "RxBlocking.xcframework",
+      "name" : "RxBlocking",
+      "swiftToolchainVersion" : "5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)",
+      "identifier" : "ios-arm64"
     },
     {
-      "hash" : "e2ede2e0ed1426fb0808ff5f4eb5e4112e768728f1e280dd1c12c39968daec2a",
-      "name" : "RxCocoa"
+      "name" : "RxCocoa",
+      "swiftToolchainVersion" : "5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)",
+      "container" : "RxCocoa.xcframework",
+      "identifier" : "ios-arm64",
+      "hash" : "59007afb718b6aecfd49b2fd8941aeaf196fd867b9c41e147b36f9bbb98e9fae"
     },
     {
-      "hash" : "355e9e78b3d55eee5fcd323fa5e36de7822364ab52cfa5edef954e42c1a23805",
+      "identifier" : "ios-arm64_x86_64-simulator",
+      "name" : "RxCocoa",
+      "hash" : "33952759b1c29f3d5289935e0fd731c5a207dd1edb01e2e4631214c5a880c420",
+      "container" : "RxCocoa.xcframework",
+      "swiftToolchainVersion" : "5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)"
+    },
+    {
+      "container" : "RxRelay.xcframework",
+      "identifier" : "ios-arm64",
+      "name" : "RxRelay",
+      "swiftToolchainVersion" : "5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)",
+      "hash" : "02bf432cf371565bd69e8c1994f9f889741dda59903cd65a6fd44c9bfaa4569f"
+    },
+    {
+      "hash" : "065eb324e5088b85a701b1b1e088958d292b9584b89e905b19b7ce1a19720214",
+      "name" : "RxRelay",
+      "container" : "RxRelay.xcframework",
+      "identifier" : "ios-arm64_x86_64-simulator",
+      "swiftToolchainVersion" : "5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)"
+    },
+    {
+      "name" : "RxSwift",
+      "identifier" : "ios-arm64",
+      "hash" : "facc98ab6e59a2ca97c3df5dcb54c0e5b30392fa7776e33fe7f5761ec3f8f535",
+      "swiftToolchainVersion" : "5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)",
+      "container" : "RxSwift.xcframework"
+    },
+    {
+      "name" : "RxSwift",
+      "hash" : "d2840acea3f0410498e3f1a5e0e629de083c5a73d4157f412e63c8f82dc14de3",
+      "swiftToolchainVersion" : "5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)",
+      "container" : "RxSwift.xcframework",
+      "identifier" : "ios-arm64_x86_64-simulator"
+    },
+    {
+      "identifier" : "ios-arm64_x86_64-simulator",
+      "name" : "RxTest",
+      "hash" : "76dd2d41f2d2dbbbd01be1fc64fe36531328d22b799ec74ba144fea10005a6c8",
+      "container" : "RxTest.xcframework",
+      "swiftToolchainVersion" : "5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)"
+    },
+    {
+      "hash" : "da36afeb7c576f35096b0ff3ba439dacf3dd222037a597a2b2a49517b94108e4",
+      "identifier" : "ios-arm64",
+      "name" : "RxTest",
+      "container" : "RxTest.xcframework",
+      "swiftToolchainVersion" : "5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)"
+    }
+  ],
+  "Mac" : [
+    {
+      "identifier" : "macos-arm64_x86_64",
+      "container" : "RxBlocking.xcframework",
+      "name" : "RxBlocking",
+      "hash" : "d22047ddd994f7fb61249ee16db1789b9015397bc6f82f284893b030f7a58624",
+      "swiftToolchainVersion" : "5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)"
+    },
+    {
+      "identifier" : "macos-arm64_x86_64",
+      "name" : "RxCocoa",
+      "container" : "RxCocoa.xcframework",
+      "hash" : "b00b1dc62268886f725efe8ae653505d9c596c31969c6eea838bae7fa27625d1",
+      "swiftToolchainVersion" : "5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)"
+    },
+    {
+      "identifier" : "macos-arm64_x86_64",
+      "name" : "RxRelay",
+      "container" : "RxRelay.xcframework",
+      "hash" : "727e60669db0a06d72c17d3af3cdc440fdf92093215763da682307aeb02c6802",
+      "swiftToolchainVersion" : "5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)"
+    },
+    {
+      "container" : "RxSwift.xcframework",
+      "hash" : "3bdd7c694b17d8dc948717d30f97eecddcf36d657982fc89500246853b240e7a",
+      "identifier" : "macos-arm64_x86_64",
+      "swiftToolchainVersion" : "5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)",
       "name" : "RxSwift"
+    },
+    {
+      "container" : "RxTest.xcframework",
+      "swiftToolchainVersion" : "5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)",
+      "identifier" : "macos-arm64_x86_64",
+      "hash" : "403cb3518f4f60b6c37dd9cc5905b2df69ad40354e67ebc856e74ab18a3ed987",
+      "name" : "RxTest"
+    }
+  ],
+  "watchOS" : [
+    {
+      "identifier" : "watchos-arm64_arm64_32_armv7k",
+      "name" : "RxBlocking",
+      "hash" : "1fbaf36cc2a1570462149ff989e6a6761e97d6fb6cb3ba8a0140b2026e94d6ab",
+      "swiftToolchainVersion" : "5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)",
+      "container" : "RxBlocking.xcframework"
+    },
+    {
+      "hash" : "fd697b63ebc11e97abf9811b225716b3254b0c81fb1269db43dc10e20dcb3754",
+      "container" : "RxBlocking.xcframework",
+      "name" : "RxBlocking",
+      "swiftToolchainVersion" : "5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)",
+      "identifier" : "watchos-arm64_i386_x86_64-simulator"
+    },
+    {
+      "hash" : "3a8d376b96f6c866f1602c65dbd6d88886a8e641568f842e3b28e10dfa97a559",
+      "name" : "RxCocoa",
+      "identifier" : "watchos-arm64_i386_x86_64-simulator",
+      "container" : "RxCocoa.xcframework",
+      "swiftToolchainVersion" : "5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)"
+    },
+    {
+      "container" : "RxCocoa.xcframework",
+      "hash" : "318788a1bc5da5675d450b701392c3437714382b6bcf7228fa7b98d3a299ed16",
+      "name" : "RxCocoa",
+      "identifier" : "watchos-arm64_arm64_32_armv7k",
+      "swiftToolchainVersion" : "5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)"
+    },
+    {
+      "name" : "RxRelay",
+      "hash" : "b6a251f2a6a5c9a1f2fea313e425a36c00fdb1d092e5adf36929ec0459a718cc",
+      "swiftToolchainVersion" : "5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)",
+      "container" : "RxRelay.xcframework",
+      "identifier" : "watchos-arm64_i386_x86_64-simulator"
+    },
+    {
+      "identifier" : "watchos-arm64_arm64_32_armv7k",
+      "name" : "RxRelay",
+      "container" : "RxRelay.xcframework",
+      "hash" : "2a931f4a9212100bcd78eb5f386fa0e9ed866f13268ad5a8bb0bca747d77974d",
+      "swiftToolchainVersion" : "5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)"
+    },
+    {
+      "identifier" : "watchos-arm64_i386_x86_64-simulator",
+      "name" : "RxSwift",
+      "container" : "RxSwift.xcframework",
+      "swiftToolchainVersion" : "5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)",
+      "hash" : "7597e48a01b8ef1b350460c1cc4440e6d0f4fab785837fe751d9dfed444c44a6"
+    },
+    {
+      "hash" : "93874f6fb5f1ecd61684f636a6cfa14fc7fc82333b1bf01147c18f4ac911fce7",
+      "identifier" : "watchos-arm64_arm64_32_armv7k",
+      "swiftToolchainVersion" : "5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)",
+      "name" : "RxSwift",
+      "container" : "RxSwift.xcframework"
     }
   ]
 }

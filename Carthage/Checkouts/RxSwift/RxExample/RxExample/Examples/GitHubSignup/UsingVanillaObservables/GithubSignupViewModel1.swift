@@ -6,10 +6,8 @@
 //  Copyright © 2015 Krunoslav Zaher. All rights reserved.
 //
 
-#if !RX_NO_MODULE
 import RxSwift
 import RxCocoa
-#endif
 
 /**
 This is example where view model is mutable. Some consider this to be MVVM, some consider this to be Presenter,
@@ -67,30 +65,30 @@ class GithubSignupViewModel1 {
         validatedUsername = input.username
             .flatMapLatest { username in
                 return validationService.validateUsername(username)
-                    .observeOn(MainScheduler.instance)
-                    .catchErrorJustReturn(.failed(message: "Error contacting server"))
+                    .observe(on:MainScheduler.instance)
+                    .catchAndReturn(.failed(message: "Error contacting server"))
             }
-            .shareReplay(1)
+            .share(replay: 1)
 
         validatedPassword = input.password
             .map { password in
                 return validationService.validatePassword(password)
             }
-            .shareReplay(1)
+            .share(replay: 1)
 
         validatedPasswordRepeated = Observable.combineLatest(input.password, input.repeatedPassword, resultSelector: validationService.validateRepeatedPassword)
-            .shareReplay(1)
+            .share(replay: 1)
 
         let signingIn = ActivityIndicator()
         self.signingIn = signingIn.asObservable()
 
-        let usernameAndPassword = Observable.combineLatest(input.username, input.password) { ($0, $1) }
+        let usernameAndPassword = Observable.combineLatest(input.username, input.password) { (username: $0, password: $1) }
 
         signedIn = input.loginTaps.withLatestFrom(usernameAndPassword)
-            .flatMapLatest { (username, password) in
-                return API.signup(username, password: password)
-                    .observeOn(MainScheduler.instance)
-                    .catchErrorJustReturn(false)
+            .flatMapLatest { pair in
+                return API.signup(pair.username, password: pair.password)
+                    .observe(on:MainScheduler.instance)
+                    .catchAndReturn(false)
                     .trackActivity(signingIn)
             }
             .flatMapLatest { loggedIn -> Observable<Bool> in
@@ -101,7 +99,7 @@ class GithubSignupViewModel1 {
                         loggedIn
                     }
             }
-            .shareReplay(1)
+            .share(replay: 1)
         
         signupEnabled = Observable.combineLatest(
             validatedUsername,
@@ -115,6 +113,6 @@ class GithubSignupViewModel1 {
                 !signingIn
             }
             .distinctUntilChanged()
-            .shareReplay(1)
+            .share(replay: 1)
     }
 }

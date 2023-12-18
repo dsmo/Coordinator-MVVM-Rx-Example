@@ -50,7 +50,7 @@ class RxExample_iOSTests
     // do.
     //
     // It's probably more suitable for some vital components of your system, but 
-    // the pricinciple is the same.
+    // the principle is the same.
     ////////////////////////////////////////////////////////////////////////////////
     func testGitHubSignup_vanillaObservables_1_testEnabledUserInterfaceElements() {
         let scheduler = TestScheduler(initialClock: 0, resolution: resolution, simulateProcessingDelay: false)
@@ -140,14 +140,14 @@ class RxExample_iOSTests
         
         This method enables using mock schedulers for while testing drivers.
         */
-        driveOnScheduler(scheduler) {
+        SharingScheduler.mock(scheduler: scheduler) {
             
             let viewModel = GithubSignupViewModel2(
                 input: (
                     username: scheduler.createHotObservable(usernameEvents).asDriver(onErrorJustReturn: ""),
                     password: scheduler.createHotObservable(passwordEvents).asDriver(onErrorJustReturn: ""),
                     repeatedPassword: scheduler.createHotObservable(repeatedPasswordEvents).asDriver(onErrorJustReturn: ""),
-                    loginTaps: scheduler.createHotObservable(loginTapEvents).asDriver(onErrorJustReturn: ())
+                    loginTaps: scheduler.createHotObservable(loginTapEvents).asSignal(onErrorJustReturn: ())
                 ),
                 dependency: (
                     API: mockAPI,
@@ -185,7 +185,8 @@ extension RxExample_iOSTests {
                     return "---f"
                 }
             },
-            signup: scheduler.mock(values: booleans, errors: errors) { (username, password) -> String in
+            signup: scheduler.mock(values: booleans, errors: errors) { (args: (String, String)) -> String in
+                let (username, password) = args
                 if username == "secretusername" && password == "secret" {
                     return "--t"
                 }

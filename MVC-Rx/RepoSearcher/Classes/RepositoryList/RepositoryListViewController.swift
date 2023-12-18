@@ -40,7 +40,7 @@ class RepositoryListViewController: UIViewController {
     private func setupUI() {
         navigationItem.rightBarButtonItem = chooseLanguageButton
 
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 100
         tableView.insertSubview(refreshControl, at: 0)
     }
@@ -56,8 +56,8 @@ class RepositoryListViewController: UIViewController {
             .debug()
             .flatMap { [unowned self] in
                 self.githubService.getMostPopularRepositories(byLanguage: $0)
-                    .observeOn(MainScheduler.instance)
-                    .catchError { error in
+                    .observe(on: MainScheduler.instance)
+                    .catch { error in
                         self.presentAlert(message: error.localizedDescription)
                         return .empty()
                     }

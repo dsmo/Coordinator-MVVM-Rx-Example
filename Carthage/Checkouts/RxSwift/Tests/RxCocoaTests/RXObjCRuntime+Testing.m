@@ -111,13 +111,13 @@ static int32_t (^defaultImpl)(int32_t) = ^int32_t(int32_t a) {
     self.invokedMethod();                                                                                                                      \
 }                                                                                                                                              \
                                                                                                                                                \
--(void (^ __nonnull)() )justCalledClosureToSay:(void (^ __nonnull)())value {                                                                   \
+-(void (^ __nonnull)(void) )justCalledClosureToSay:(void (^ __nonnull)(void))value {                                                                   \
     [self.privateBaseMessages addObject:A(value)];                                                                                             \
     self.invokedMethod();                                                                                                                      \
     return value;                                                                                                                              \
 }                                                                                                                                              \
                                                                                                                                                \
--(void)voidJustCalledClosureToSay:(void (^ __nonnull)())value {                                                                                \
+-(void)voidJustCalledClosureToSay:(void (^ __nonnull)(void))value {                                                                                \
     [self.privateBaseMessages addObject:A(value)];                                                                                             \
     self.invokedMethod();                                                                                                                      \
 }                                                                                                                                              \
@@ -306,8 +306,8 @@ static int32_t (^defaultImpl)(int32_t) = ^int32_t(int32_t a) {
                                        p15:(int8_t * __nullable)p15                                                                            \
                                        p16:(some_insanely_large_struct_t)p16 {                                                                 \
     [self.privateBaseMessages addObject:A(                                                                                                     \
-        p1 ?: [NSNull null],                                                                                                                   \
-        p2 ?: [NSNull null],                                                                                                                   \
+        p1,                                                                                                                   \
+        p2,                                                                                                                   \
         p3 ?: defaultImpl,                                                                                                                     \
         @(p4),                                                                                                                                 \
         @(p5),                                                                                                                                 \
@@ -386,12 +386,12 @@ baseClassContent                                                                
     return [super voidJustCalledClassToSay:value];                                                                                             \
 }                                                                                                                                              \
                                                                                                                                                \
--(void (^ __nonnull)() )justCalledClosureToSay:(void (^ __nonnull)())value {                                                                   \
+-(void (^ __nonnull)(void) )justCalledClosureToSay:(void (^ __nonnull)(void))value {                                                                   \
     [self.privateMessages addObject:A(value)];                                                                                                 \
     return [super justCalledClosureToSay:value];                                                                                               \
 }                                                                                                                                              \
                                                                                                                                                \
--(void)voidJustCalledClosureToSay:(void (^ __nonnull)())value {                                                                                \
+-(void)voidJustCalledClosureToSay:(void (^ __nonnull)(void))value {                                                                                \
     [self.privateMessages addObject:A(value)];                                                                                                 \
     return [super voidJustCalledClosureToSay:value];                                                                                           \
 }                                                                                                                                              \
@@ -562,9 +562,9 @@ baseClassContent                                                                
                                        p14:(const int8_t * __nullable)p14                                                                      \
                                        p15:(int8_t * __nullable)p15                                                                            \
                                        p16:(some_insanely_large_struct_t)p16 {                                                                 \
-    [self.privateMessages addObject:A(                                                                                                         \
-        p1 ?: [NSNull null],                                                                                                                   \
-        p2 ?: [NSNull null],                                                                                                                   \
+    [self.privateMessages addObject:A(                                                                                                             \
+        p1,                                                                                                                                    \
+        p2,                                                                                                                               \
         p3 ?: defaultImpl,                                                                                                                     \
         @(p4),                                                                                                                                 \
         @(p5),                                                                                                                                 \
@@ -646,15 +646,15 @@ IMPLEMENT_OBSERVING_CLASS_PAIR_FOR_TEST(all_supported_types)
 
 -(BOOL)isEqual:(Arguments *)object {
     if (object == self) {
-        return YES;
+        YES;
     }
 
     if (object == nil) {
-        return NO;
+        NO;
     }
 
     if ([self class] != [object class]) {
-        return NO;
+        NO;
     }
 
     return [self.values isEqualToArray:object.values];

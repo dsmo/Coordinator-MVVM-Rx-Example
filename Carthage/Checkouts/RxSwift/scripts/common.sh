@@ -20,24 +20,34 @@ BOLDCYAN="\033[1m\033[36m"
 BOLDWHITE="\033[1m\033[37m"
 
 # make sure all tests are passing
+if [[ `uname` == "Darwin" ]]; then
+	echo "🏔 Running iOS 16 / Xcode 14"
 
-if [ `xcrun simctl list runtimes | grep com.apple.CoreSimulator.SimRuntime.iOS-10-3 | wc -l` -eq 1 ]; then
-	DEFAULT_IOS_SIMULATOR=RxSwiftTest/iPhone-6/iOS/10.3
-else
-	DEFAULT_IOS_SIMULATOR=RxSwiftTest/iPhone-6/iOS/10.0
+	if [ `xcrun simctl list runtimes | grep com.apple.CoreSimulator.SimRuntime.iOS-16- | wc -l` -ge 1 ]; then
+		DEFAULT_IOS_SIMULATOR=RxSwiftTest/iPhone-14/iOS/16.2
+	else
+		echo "No iOS 16.* Simulator found, available runtimes are:"
+		xcrun simctl list runtimes
+		exit -1
+	fi
+
+	if [ `xcrun simctl list runtimes | grep com.apple.CoreSimulator.SimRuntime.watchOS-9- | wc -l` -ge 1 ]; then
+		DEFAULT_WATCHOS_SIMULATOR=RxSwiftTest/Apple-Watch-Series-8-45mm/watchOS/9.0
+	else
+		echo "No watchOS 9.* Simulator found, available runtimes are:"
+		xcrun simctl list runtimes
+		exit -1
+	fi
+
+	if [ `xcrun simctl list runtimes | grep com.apple.CoreSimulator.SimRuntime.tvOS-16- | wc -l` -ge 1 ]; then
+		DEFAULT_TVOS_SIMULATOR=RxSwiftTest/Apple-TV-1080p/tvOS/16.0
+	else
+		echo "No tvOS 16.* Simulator found, available runtimes are:"
+		xcrun simctl list runtimes
+		exit -1
+	fi
 fi
 
-if [ `xcrun simctl list runtimes | grep com.apple.CoreSimulator.SimRuntime.watchOS-3-2 | wc -l` -eq 1 ]; then
-	DEFAULT_WATCHOS_SIMULATOR=RxSwiftTest/Apple-Watch-38mm/watchOS/3.2
-else
-	DEFAULT_WATCHOS_SIMULATOR=RxSwiftTest/Apple-Watch-38mm/watchOS/3.0
-fi
-
-if [ `xcrun simctl list runtimes | grep com.apple.CoreSimulator.SimRuntime.tvOS-10-2 | wc -l` -eq 1 ]; then
-	DEFAULT_TVOS_SIMULATOR=RxSwiftTest/Apple-TV-1080p/tvOS/10.2
-else
-	DEFAULT_TVOS_SIMULATOR=RxSwiftTest/Apple-TV-1080p/tvOS/10.0
-fi
 RUN_SIMULATOR_BY_NAME=0
 
 function runtime_available() {
@@ -104,7 +114,8 @@ function ensure_simulator_available() {
 
 	SIMULATOR_ID=`simulator_ids "${SIMULATOR}"`
 	echo "Warming up ${SIMULATOR_ID} ..."
-	open -a "Simulator" --args -CurrentDeviceUDID "${SIMULATOR_ID}"
+	xcrun simctl boot "${SIMULATOR_ID}"
+	open -a "Simulator" --args -CurrentDeviceUDID "${SIMULATOR_ID}" || true
 	sleep 120
 }
 
@@ -150,7 +161,7 @@ function action() {
 	set -x
 	mkdir -p build
 	killall Simulator || true
-	xcodebuild -workspace "${WORKSPACE}" \
+	LINT=1 xcodebuild -workspace "${WORKSPACE}" \
 		-scheme "${SCHEME}" \
 		-configuration "${CONFIGURATION}" \
 		-derivedDataPath "${BUILD_DIRECTORY}" \

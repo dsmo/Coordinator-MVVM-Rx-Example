@@ -6,10 +6,8 @@
 //  Copyright © 2015 Krunoslav Zaher. All rights reserved.
 //
 
-#if !RX_NO_MODULE
 import RxSwift
 import RxCocoa
-#endif
 
 /**
 This is example where view model is mutable. Some consider this to be MVVM, some consider this to be Presenter,
@@ -47,7 +45,7 @@ class GithubSignupViewModel2 {
             username: Driver<String>,
             password: Driver<String>,
             repeatedPassword: Driver<String>,
-            loginTaps: Driver<Void>
+            loginTaps: Signal<()>
         ),
         dependency: (
             API: GitHubAPI,
@@ -68,8 +66,8 @@ class GithubSignupViewModel2 {
          When using `Driver`, underlying observable sequence elements are shared because
          driver automagically adds "shareReplay(1)" under the hood.
          
-             .observeOn(MainScheduler.instance)
-             .catchErrorJustReturn(.Failed(message: "Error contacting server"))
+             .observe(on:MainScheduler.instance)
+             .catchAndReturn(.Failed(message: "Error contacting server"))
          
          ... are squashed into single `.asDriver(onErrorJustReturn: .Failed(message: "Error contacting server"))`
         */
@@ -90,11 +88,11 @@ class GithubSignupViewModel2 {
         let signingIn = ActivityIndicator()
         self.signingIn = signingIn.asDriver()
 
-        let usernameAndPassword = Driver.combineLatest(input.username, input.password) { ($0, $1) }
+        let usernameAndPassword = Driver.combineLatest(input.username, input.password) { (username: $0, password: $1) }
 
         signedIn = input.loginTaps.withLatestFrom(usernameAndPassword)
-            .flatMapLatest { (username, password) in
-                return API.signup(username, password: password)
+            .flatMapLatest { pair in
+                return API.signup(pair.username, password: pair.password)
                     .trackActivity(signingIn)
                     .asDriver(onErrorJustReturn: false)
             }

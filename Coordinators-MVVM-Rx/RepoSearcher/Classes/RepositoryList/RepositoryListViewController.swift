@@ -33,7 +33,7 @@ class RepositoryListViewController: UIViewController, StoryboardInitializable {
     private func setupUI() {
         navigationItem.rightBarButtonItem = chooseLanguageButton
 
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 100
         tableView.insertSubview(refreshControl, at: 0)
     }
@@ -43,7 +43,7 @@ class RepositoryListViewController: UIViewController, StoryboardInitializable {
         // View Model outputs to the View Controller
 
         viewModel.repositories
-            .observeOn(MainScheduler.instance)
+            .observe(on: MainScheduler.instance)
             .do(onNext: { [weak self] _ in self?.refreshControl.endRefreshing() })
             .bind(to: tableView.rx.items(cellIdentifier: "RepositoryCell", cellType: RepositoryCell.self)) { [weak self] (_, repo, cell) in
                 self?.setupRepositoryCell(cell, repository: repo)

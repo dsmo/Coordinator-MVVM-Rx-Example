@@ -62,7 +62,7 @@ class GithubService {
                     return
                 }
 
-                let repositories = itemsJSON.flatMap(Repository.init)
+                let repositories = itemsJSON.compactMap(Repository.init)
                 completionHandler(.success(repositories))
             }
         }.resume()

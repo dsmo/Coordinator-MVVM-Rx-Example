@@ -6,14 +6,12 @@
 //  Copyright © 2015 Krunoslav Zaher. All rights reserved.
 //
 
-#if !RX_NO_MODULE
 import RxSwift
-#endif
 
 #if os(iOS)
-import UIKit
+    import UIKit
 #elseif os(macOS)
-import Cocoa
+    import Cocoa
 #endif
 
 enum RetryResult {
@@ -32,9 +30,9 @@ class DefaultWireframe: Wireframe {
 
     func open(url: URL) {
         #if os(iOS)
-            UIApplication.shared.openURL(url)
+            UIApplication.shared.open(url)
         #elseif os(macOS)
-            NSWorkspace.shared().open(url)
+            NSWorkspace.shared.open(url)
         #endif
     }
 

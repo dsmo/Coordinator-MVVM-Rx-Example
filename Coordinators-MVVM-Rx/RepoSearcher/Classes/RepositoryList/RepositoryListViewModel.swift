@@ -59,7 +59,7 @@ class RepositoryListViewModel {
         self.repositories = Observable.combineLatest( _reload, _currentLanguage) { _, language in language }
             .flatMapLatest { language in
                 githubService.getMostPopularRepositories(byLanguage: language)
-                    .catchError { error in
+                    .catch { error in
                         _alertMessage.onNext(error.localizedDescription)
                         return Observable.empty()
                     }
